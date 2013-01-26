@@ -18,6 +18,7 @@
 #define BBM_BPS_H_
 
 #include <bbmsp/bbmsp_contactlist.h>
+#include <bbmsp/bbmsp_userprofile.h>
 #include <pthread.h>
 #include <string>
 #include <json/writer.h>
@@ -40,6 +41,7 @@ enum BBMField {
 enum BBMInternalEvents {
     INTERNAL_EVENT_REGISTER = 0,
     INTERNAL_EVENT_CONTACT_EVENTS,
+    INTERNAL_EVENT_GET_DISPLAY_PICTURE,
     INTERNAL_EVENT_STOP,
     INTERNAL_EVENT_GET_CONTACT_LIST,
 };
@@ -74,7 +76,12 @@ private:
     void processContactUpdate(bbmsp_event_t *event);
     void processContactList(bbmsp_event_t *event);
     std::string getFullProfile();
+<<<<<<< HEAD
     Json::Value getFullContact(bbmsp_contact_t *contact);
+=======
+    std::string getProfileDisplayPicture(bbmsp_profile_t *profile);
+    std::string getFullContact(bbmsp_contact_t *contact);
+>>>>>>> b7d5eec857d10d2c01640688b78978e5b027314a
     static bool contactEventsEnabled;
     static pthread_mutex_t m_lock;
     static int m_eventChannel;
